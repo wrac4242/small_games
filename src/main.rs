@@ -1,5 +1,7 @@
 use std::io;
 
+mod games;
+
 fn main() {
     println!("Welcome to Wrac's set of games");
     // A basic terminal menu, press numbers to go to the different games
@@ -35,5 +37,14 @@ fn main() {
             },
         }
     }
-    println!("{}", game);
+    
+
+    match game {
+        1 => games::nim::main_game(),
+        2 => games::blackjack::main_game(),
+        _ => {
+            println!("Critical error in game selection, {}", game);
+            return;
+        }
+    }
 }
